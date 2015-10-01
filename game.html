@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<title>Physucks for Ducks Quack Quack!</title>
+		<link rel = "stylesheet"  href = "css/style.css"/>
+	</head>
+
+	<style type = "text/css">
+
+	#circle {
+	    width: 16px;
+	    height: 16px;
+	    background: #000000;
+	    -moz-border-radius: 8px;
+	    -webkit-border-radius: 8px;
+	    border-radius: 8px;
+	}
+
+	#square {
+	    width: 200px;
+	    height: 16px;
+	    background: #000000;
+	}
+
+	#triangle_left {
+		width: 0;
+		height: 0;
+		border-top: 16px solid transparent;
+		border-right: 50px solid #6bbf20;
+		border-bottom: 16px solid transparent;
+	
+	}
+
+	</style>
+
+	<body>
+		<script type = "text/javascript" src="js/jquery-1.11.1.js"></script>
+		<script type = "text/javascript" src = "js/physics.js"></script>
+		<script type = "text/javascript" src = "js/main.js"></script>
+
+		<!--<svg width = "100" height = "100">
+			<circle cx ="30" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "black">
+			<rect x = "100" y = "0" width = "200" height = "10" style = "fill:black; stroke:black; 
+			stroke-width:5; fill-opacity: 1; stroke-opacity:1"/>
+	
+		</svg> --> 
+	
+		<table style = "width:100%">
+			<tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+			</tr>
+		
+			<tr></tr><tr></tr><tr></tr>
+		
+			<tr>	
+				<td><div id = "circle"></div></td>
+		
+				<td><div id = "square"></div></td>
+				
+				<td><div id = "triangle_left"></div></td>
+			
+			</tr>
+		</table>
+
+	</body>
+</html>

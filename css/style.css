@@ -78,3 +78,7 @@ body{
   cursor: hand;
   cursor: pointer;
 }
+
+#version{
+  bottom:5px;
+}

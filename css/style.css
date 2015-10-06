@@ -27,8 +27,14 @@ body{
   font-size:5vw;
   font-weight:300;
   color:#FFFFFF;
-  padding-top:5%;
+  padding-top:25%;
+  -webkit-animation-delay: 0.65s;
+  animation-delay: 0.5s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+
 }
+
 
 #start_button{
 	position:relative;
@@ -45,6 +51,10 @@ body{
   -moz-transition: background .4s, border .5s, color .3s;
   transition: background .4s, border .5s, color .3s;
   border-radius:4px;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
 }
 
 #start_button:hover{
@@ -69,6 +79,10 @@ body{
   -moz-transition: background .4s, border .5s, color .3s;
   transition: background .4s, border .5s, color .3s;
   border-radius:4px;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
 }
 
 #aboot:hover{
@@ -80,5 +94,12 @@ body{
 }
 
 #version{
+  position: absolute;
   bottom:5px;
+  right:5px;
+  font-weight:300;
+  font-style: italic;
+  font-size:0.8vw;
+  font-family: "Roboto", sans-serif;
+  color:white;
 }

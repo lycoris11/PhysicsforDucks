@@ -53,7 +53,25 @@
 
 		// run the engine
 		Engine.run(engine);
+		
+		var whichSide = true;
+		function createBox()
+		{
+			if(whichSide == true)
+			{
+				World.add(engine.world, Bodies.polygon(450, 50, 1, 20));
+				whichSide = false;
+			}
+			
+			else
+			{
+				World.add(engine.world, Bodies.polygon(900, 50, 1, 15));
+				whichSide = true;
+			}
+		}
 
 		</script>
+		
+		<input type = "button" onclick = "createBox()" value = "Square"></input>
 	</body>
 </html>

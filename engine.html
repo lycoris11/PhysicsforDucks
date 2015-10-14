@@ -43,10 +43,13 @@
 		// create two boxes and a ground
 		var boxA = Bodies.rectangle(1500, 200, 80, 80);
 		var boxB = Bodies.rectangle(450, 50, 80, 80);
-		var ground = Bodies.rectangle(15, Vpy, 5000, 30, { isStatic: true });
+		var ground = Bodies.rectangle(Vpx/2, Vpy, Vpx, 30, { isStatic: true });
+		var roof = Bodies.rectangle(Vpx/2, 0, Vpx, 10, {isStatic: true});
+		var leftWall = Bodies.rectangle(10, 20, 10, Vpy*0.9);
+		var right = Bodies.rectangle();
 
 		// add all of the bodies to the world
-		World.add(engine.world, [ground, boxA, boxB]);
+		World.add(engine.world, [ground, boxA, boxB, roof, leftWall]);
 
 		var mouseConstraint = MouseConstraint.create(engine);
 		World.add(engine.world, mouseConstraint);

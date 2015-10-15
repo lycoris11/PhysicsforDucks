@@ -62,19 +62,33 @@
 		{
 			if(whichSide == true)
 			{
-				World.add(engine.world, Bodies.polygon(450, 50, 1, 20));
-				whichSide = false;
+				var x = document.getElementById("xLength").value ;
+				
+					World.add(engine.world, Bodies.polygon(450, 50, 10, x));
+					whichSide = false;
 			}
 			
 			else
 			{
-				World.add(engine.world, Bodies.polygon(900, 50, 1, 15));
-				whichSide = true;
+				var x = document.getElementById("xLength").value ;
+				
+					World.add(engine.world, Bodies.polygon(900, 50, 10, x));
+					whichSide = true;
 			}
+		}
+		
+		function get_xVal()
+		{
+			var x = document.getElementById("xLength").value ;
+				document.getElementById("xDiv").innerHTML = x;
+		
 		}
 
 		</script>
 		
+		Radius: 
+		<div id = "xDiv"></div>
+		<input type="range" id="xLength" value="90" onClick = "get_xVal()">
 		<input type = "button" onclick = "createBox()" value = "Square"></input>
 	</body>
 </html>

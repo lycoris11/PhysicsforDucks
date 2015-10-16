@@ -34,8 +34,8 @@
     	Renderer = {
        				options:{
            	            wireframes: true,
-               	        width: Vpx*0.8,
-                   	    height: Vpy,
+               	        width: Vpx,
+                   	    height: Vpy*.7,
                    	}};
 
 		// create a Matter.js engine
@@ -43,13 +43,13 @@
 		// create two boxes and a ground
 		var boxA = Bodies.rectangle(1500, 200, 80, 80);
 		var boxB = Bodies.rectangle(450, 50, 80, 80);
-		var ground = Bodies.rectangle(Vpx/2, Vpy, Vpx, 30, { isStatic: true });
+		var ground = Bodies.rectangle(Vpx/2, Vpy*.7, Vpx, 30, { isStatic: true });
 		var roof = Bodies.rectangle(Vpx/2, 0, Vpx, 10, {isStatic: true});
 		var leftWall = Bodies.rectangle(10, 20, 10, Vpy*0.9);
 		var right = Bodies.rectangle();
 
 		// add all of the bodies to the world
-		World.add(engine.world, [ground, boxA, boxB, roof, leftWall]);
+		World.add(engine.world, [ground, boxA, boxB]);
 
 		var mouseConstraint = MouseConstraint.create(engine);
 		World.add(engine.world, mouseConstraint);
@@ -62,33 +62,47 @@
 		{
 			if(whichSide == true)
 			{
-				var x = document.getElementById("xLength").value ;
+				var x = document.getElementById("rad").value ;
+				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(450, 50, 10, x));
+					World.add(engine.world, Bodies.polygon(450, 50, y, x));
 					whichSide = false;
 			}
 			
 			else
 			{
-				var x = document.getElementById("xLength").value ;
+				var x = document.getElementById("rad").value ;
+				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(900, 50, 10, x));
+					World.add(engine.world, Bodies.polygon(900, 50, y, x));
 					whichSide = true;
 			}
 		}
 		
-		function get_xVal()
+		function get_radVal()
 		{
-			var x = document.getElementById("xLength").value ;
-				document.getElementById("xDiv").innerHTML = x;
+			var x = document.getElementById("rad").value ;
+				document.getElementById("radDiv").innerHTML = x;
+		
+		}
+		
+		function get_sidesVal()
+		{
+			var x = document.getElementById("numSides").value ;
+				document.getElementById("sidesDiv").innerHTML = x;
 		
 		}
 
 		</script>
 		
 		Radius: 
-		<div id = "xDiv"></div>
-		<input type="range" id="xLength" value="90" onClick = "get_xVal()">
-		<input type = "button" onclick = "createBox()" value = "Square"></input>
+		<div id = "radDiv"></div>
+		<input type = "range" id = "rad" value = "90" onClick = "get_radVal()">
+		<br>
+		Number Of Sides:
+		<div id = "sidesDiv"></div>
+		<input type ="range" id = "numSides" value = "90" onClick = "get_sidesVal()" max = "10">
+		<br>
+		<input type = "button" onclick = "createBox()" value = "Polygon"></input>
 	</body>
 </html>

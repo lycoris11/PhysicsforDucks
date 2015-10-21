@@ -62,23 +62,25 @@
 		var whichSide = true;
 		function createBox()
 		{
+			var location;
+			
 			if(whichSide == true)
 			{
-				var x = document.getElementById("rad").value ;
-				var y = document.getElementById("numSides").value ;
+				location = 450;
+				whichSide = false;
 				
-					World.add(engine.world, Bodies.polygon(450, 50, y, x));
-					whichSide = false;
 			}
-			
 			else
 			{
+				location = 900;
+				whichSide = true;
+			}
+
+			
 				var x = document.getElementById("rad").value ;
 				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(900, 50, y, x));
-					whichSide = true;
-			}
+					World.add(engine.world, Bodies.polygon(location, 50, y, x));
 		}
 		
 		function get_radVal()

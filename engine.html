@@ -100,55 +100,22 @@
 		var app = angular.module('sliders', []);
 
 			app.controller('MainCtrl', function($scope) {
-				$scope.h = 180;
+				$scope.r = 180;
 				$scope.s = 50;
-				$scope.l = 50;
-				$scope.ahsl = 100;
-				$scope.r=127;
-				$scope.g=127;
-				$scope.b=127;
-				$scope.argb=100;
 			});
 
 		</script>
-		
-		Radius: 
-		<div id = "radDiv"></div>
-		<input type = "range" id = "rad" value = "90" onClick = "get_radVal()">
-		<br>
-		Number Of Sides:
-		<div id = "sidesDiv"></div>
-		<input type ="range" id = "numSides" value = "90" onClick = "get_sidesVal()" max = "10">
-		<br>
-		<input type = "button" onclick = "createBox()" value = "Polygon"></input>
 
 		<form action="#" class="hslform" ng-controller="MainCtrl">
-					<h2><span style="color:#FF6B00">Hue</span>, Saturation, <span style="color:rgb(127, 127, 127)">Lightness</span></h2>
-						<div id="colorlabel" for="h">h: {{ h }}</div>
-						<input type="range" class="range" name="h" min="0" max="360" ng-model="h"></input>
-						<div id="colorlabel" for="s">s: {{ s }}%</div>
-						<input type="range" class="range" name="s" min="0" max="100" ng-model="s"></input>
-						<div id="colorlabel" for="l">l: {{ l }}%</div>
-						<input type="range" class="range" name="l" min="0" max="100" ng-model="l"></input>
-						<div id="colorlabel" for="ahsl">a: {{ ahsl/100 }}</div>
-						<input type="range" class="range" name="ahsl" min="0" max="100" ng-model="ahsl"></input>
-						
-						<div class="hslresult " style="background-color:hsla({{h}}, {{s}}%, {{l}}%, {{ahsl*0.01}})"></div>
-					</form>
-					
-					<form action="#" class="rgbaform" ng-controller="MainCtrl">
-					<h2><span style="color:#BF3F3F">Red</span>, <span style="color:#3FBF3F">Green</span>, <span style="color:#3F6ABF">Blue</span></h2>
-						<div id="colorlabel" for="r">r: {{ r }}</div>
-						<input type="range" class="range" name="r" min="0" max="255" ng-model="r"></input>
-						<div id="colorlabel" for="g">g: {{ g }}</div>
-						<input type="range" class="range" name="r" min="0" max="255" ng-model="g"></input>
-						<div id="colorlabel" for="b">b: {{ b }}</div>
-						<input type="range" class="range" name="r" min="0" max="255" ng-model="b"></input>
-						<div id="colorlabel" for="argb">a: {{ argb/100 }}</div>
-						<input type="range" class="range" name="argb" min="0" max="100" ng-model="argb"></input>
-						
-						<div class="hslresult " style="background-color:rgba({{r}}, {{g}}, {{b}}, {{argb*0.01}})"></div>
-						
-					</form>
+			<h2>Add Objects</h2>
+
+			<div id="colorlabel" for="r">Radius: {{ r }}</div>
+			<input type="range" id = "rad" class="range" name="r" min="0" max="100" ng-model="r" onClick = "get_radVal()"></input>
+
+			<div id="colorlabel" for="s">Sides: {{ s }}</div>
+			<input type="range" id = "numSides" class="range" name="s" min="0" max="20" ng-model="s" onClick = "get_sidesVal()"></input>
+
+			<input type = "button" onclick = "createBox()" value = "Polygon"></input>
+		</form>
 	</body>
 </html>

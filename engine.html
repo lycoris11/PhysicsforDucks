@@ -37,6 +37,8 @@
            	            wireframes: true,
                	        width: Vpx,
                    	    height: Vpy*.7,
+                   	    showAngleIndicator: true,
+                   	    showVelocity: true,
                    	}};
 
 		// create a Matter.js engine
@@ -86,14 +88,12 @@
 		function get_radVal()
 		{
 			var x = document.getElementById("rad").value ;
-				document.getElementById("radDiv").innerHTML = x;
 		
 		}
 		
 		function get_sidesVal()
 		{
 			var x = document.getElementById("numSides").value ;
-				document.getElementById("sidesDiv").innerHTML = x;
 		
 		}
 

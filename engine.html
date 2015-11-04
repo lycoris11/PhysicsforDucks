@@ -46,10 +46,13 @@
 		var roof = Bodies.rectangle(Vpx/2, 0, Vpx, 10, {isStatic: true, friction: 0});
 		var leftWall = Bodies.rectangle(10, 20, 10, Vpy*0.9);
 		var right = Bodies.rectangle();
+		var currentBody;
 
 		World.add(engine.world, [ground, roof]);
 
 		var mouseConstraint = MouseConstraint.create(engine);
+		mouseConstraint.constraint.render.visible = false;
+		mouseConstraint.constraint.stiffness = 1;
 		World.add(engine.world, mouseConstraint);
 
 		
@@ -97,10 +100,21 @@
 		var app = angular.module('sliders', []);
 
 			app.controller('MainCtrl', function($scope) {
-				$scope.r = 100;
-				$scope.s = 20;
+				$scope.r = 25;
+				$scope.s = 4;
 			});
-
+		
+		function getShape()
+		{
+			currentBody = mouseConstraint.dragBody;
+		}
+		function resetForce()
+		{
+			currentBody.resetForcesAll;
+		}
+			//currentBody.addEventListener("mousedown", getShape());
+			//currentBody.addEventListener("mouseup", resetForce());
+			
 		</script>
 
 		<form action="#" class="hslform" ng-controller="MainCtrl">
@@ -110,7 +124,7 @@
 			<input type="range" id = "rad" class="range" name="r" min="0" max="100" ng-model="r" onClick = "get_radVal()"></input>
 
 			<div id="colorlabel" for="s">Sides: {{ s }}</div>
-			<input type="range" id = "numSides" class="range" name="s" min="0" max="20" ng-model="s" onClick = "get_sidesVal()"></input>
+			<input type="range" id = "numSides" class="range" name="s" min="0" max="10" ng-model="s" onClick = "get_sidesVal()"></input>
 
 			<input type = "button" onclick = "createBox()" value = "Polygon"></input>
 		</form>

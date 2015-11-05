@@ -136,10 +136,10 @@
 		var app = angular.module('sliders', []);
 
 			app.controller('MainCtrl', function($scope) {
-				$scope.r = 25;
+				$scope.r = 50;
 				$scope.s = 4;
-				$scope.l = 0;
-				$scope.w = 0;
+				$scope.l = 100;
+				$scope.w = 50;
 			});
 		
 		function getShape()
@@ -148,10 +148,10 @@
 		}
 		function resetForce()
 		{
-			currentBody.resetForcesAll;
+			Body.resetForcesAll(currentBody);
 		}
-			//currentBody.addEventListener("mousedown", getShape());
-			//currentBody.addEventListener("mouseup", resetForce());
+			engine.render.canvas.addEventListener("mousedown", getShape());
+			engine.render.canvas.addEventListener("mouseup", resetForce());
 			
 		</script>
 
@@ -165,10 +165,10 @@
 			<input type="range" id = "numSides" class="range" name="s" min="0" max="10" ng-model="s" onClick = "get_sidesVal()"></input>
 
 			<div id="colorlabel" for="l">Length: {{ l }}</div>
-			<input type="range" id = "numLength" class="range" name="l" min="0" max="50" ng-model="l" onClick = "get_lengthVal()"></input>
+			<input type="range" id = "numLength" class="range" name="l" min="0" max="100" ng-model="l" onClick = "get_lengthVal()"></input>
 
 			<div id="colorlabel" for="w">Width: {{ w }}</div>
-			<input type="range" id = "numWidth" class="range" name="w" min="0" max="50" ng-model="w" onClick = "get_widthVal()"></input>
+			<input type="range" id = "numWidth" class="range" name="w" min="0" max="100" ng-model="w" onClick = "get_widthVal()"></input>
 
 			<input type = "button" onclick = "createBox()" value = "Polygon"></input>
 			<input type = "button" onclick = "createRect()" value = "Rectangle"></input>

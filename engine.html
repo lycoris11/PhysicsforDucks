@@ -49,8 +49,11 @@
 
 		World.add(engine.world, [ground, roof]);
 
+		//creating a mouse constraint object
 		var mouseConstraint = MouseConstraint.create(engine);
+		//removes the little green thing as you drag around objects
 		mouseConstraint.constraint.render.visible = false;
+		//makes the mouse constraint really stiff so that there isn't much leeway when dragging objects.
 		mouseConstraint.constraint.stiffness = 1;
 		World.add(engine.world, mouseConstraint);
 
@@ -83,6 +86,28 @@
 				
 					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 1, frictionAir: 0, friction: 0}));
 		}
+
+		function createRect(){
+			var location
+
+
+			if(whichSide == true)
+			{
+				location = 450;
+				whichSide = false;
+				
+			}
+			else
+			{
+				location = 900;
+				whichSide = true;
+			}
+
+			var length = document.getElementById("numLength").value;
+			var width = document.getElementById("numWidth").value;
+
+			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: 1, frictionAir:0, friction:0}));
+		}
 		
 		function get_radVal()
 		{
@@ -96,11 +121,25 @@
 		
 		}
 
+		function get_lengthVal()
+		{
+			var x = document.getElementById("numLength").value ;
+		
+		}
+
+		function get_widthVal()
+		{
+			var x = document.getElementById("numWidth").value ;
+		
+		}
+
 		var app = angular.module('sliders', []);
 
 			app.controller('MainCtrl', function($scope) {
 				$scope.r = 25;
 				$scope.s = 4;
+				$scope.l = 0;
+				$scope.w = 0;
 			});
 		
 		function getShape()
@@ -125,7 +164,14 @@
 			<div id="colorlabel" for="s">Sides: {{ s }}</div>
 			<input type="range" id = "numSides" class="range" name="s" min="0" max="10" ng-model="s" onClick = "get_sidesVal()"></input>
 
+			<div id="colorlabel" for="l">Length: {{ l }}</div>
+			<input type="range" id = "numLength" class="range" name="l" min="0" max="50" ng-model="l" onClick = "get_lengthVal()"></input>
+
+			<div id="colorlabel" for="w">Width: {{ w }}</div>
+			<input type="range" id = "numWidth" class="range" name="w" min="0" max="50" ng-model="w" onClick = "get_widthVal()"></input>
+
 			<input type = "button" onclick = "createBox()" value = "Polygon"></input>
+			<input type = "button" onclick = "createRect()" value = "Rectangle"></input>
 		</form>
 	</body>
 </html>

@@ -61,7 +61,7 @@
 		Engine.run(engine);
 		
 
-		engine.world.gravity.y = 0;
+		engine.world.gravity.y = 1;
 		
 		var whichSide = true;
 		function createBox()
@@ -84,7 +84,7 @@
 				var x = document.getElementById("rad").value ;
 				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 1, frictionAir: 0, friction: 0}));
+					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 0, frictionAir: 0, friction: .2}));
 		}
 
 		function createRect(){
@@ -106,7 +106,7 @@
 			var length = document.getElementById("numLength").value;
 			var width = document.getElementById("numWidth").value;
 
-			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: 1, frictionAir:0, friction:0}));
+			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: .5, frictionAir:0, friction:.4}));
 		}
 		
 		function get_radVal()
@@ -148,7 +148,7 @@
 		}
 		function resetForce()
 		{
-			Body.resetForcesAll(currentBody);
+			mouseConstraint.dragBody.isStatic = true;
 		}
 			engine.render.canvas.addEventListener("mousedown", getShape());
 			engine.render.canvas.addEventListener("mouseup", resetForce());

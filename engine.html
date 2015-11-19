@@ -11,7 +11,10 @@
 	</style>
 
 	<body ng-app="sliders">
-        <script>var bigFrog = 0;</script>
+        <script>
+				var bigFrog = 0;
+				var otherBigFrog = null; 
+		</script>
 		<script type = "text/javascript" src = "js/jquery-1.11.1.js"></script>
 		<script type = "text/javascript" src = "js/physics.js"></script>
 		<script type = "text/javascript" src = "js/main.js"></script>
@@ -62,7 +65,7 @@
 		Engine.run(engine);
 		
 
-		engine.world.gravity.y = 0;
+		engine.world.gravity.y = 1;
 		
 		var whichSide = true;
 		function createBox()
@@ -153,8 +156,23 @@
 			//alert("restForce");
 			currentBody.isStatic = false;
 		}
-		engine.render.canvas.addEventListener("mousedown", function () {document.getElementById("bigFrogs").innerHTML = bigFrog; bigFrog.setStatic(true);});
-			engine.render.canvas.addEventListener("mouseup", function(){bigFrog.setStatic(true)});
+		engine.render.canvas.addEventListener("mousedown", function () 
+		{
+			//var bodiesArray = Matter.Composite.allBodies(World);
+			otherBigFrog.isStatic = false;
+			document.getElementById("bigFrogs").innerHTML = bigFrog; 
+			otherBigFrog.angularVelocity = 10000000000000000000;
+			
+		})
+			
+		engine.render.canvas.addEventListener("mouseup", function()
+		{
+		
+			otherBigFrog.isStatic = true;
+			//otherBigFrog = null;
+		
+		}
+		);
 			
 		</script>
 

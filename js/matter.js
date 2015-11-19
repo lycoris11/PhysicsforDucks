@@ -3764,6 +3764,10 @@ var Composite = require('../body/Composite');
 var Common = require('../core/Common');
 var Bounds = require('../geometry/Bounds');
 
+
+
+//var bigFrog = 0; //index of specific body
+
 (function() {
 
     /**
@@ -3850,6 +3854,7 @@ var Bounds = require('../geometry/Bounds');
                                 Sleeping.set(body, false);
                                 Events.trigger(mouseConstraint, 'startdrag', { mouse: mouse, body: body });
 
+                                bigFrog = i;
                                 break;
                             }
                         }

@@ -11,6 +11,7 @@
 	</style>
 
 	<body ng-app="sliders">
+        <script>var bigFrog = 0;</script>
 		<script type = "text/javascript" src = "js/jquery-1.11.1.js"></script>
 		<script type = "text/javascript" src = "js/physics.js"></script>
 		<script type = "text/javascript" src = "js/main.js"></script>
@@ -45,9 +46,9 @@
 		var roof = Bodies.rectangle(Vpx/2, 0, Vpx, 10, {isStatic: true, friction: 0});
 		var leftWall = Bodies.rectangle(10, 20, 10, Vpy*0.9);
 		var right = Bodies.rectangle();
-		var currentBody;
+		var Frog = Bodies.rectangle(500,500,50,50, {angularVelocity: 100});
 
-		World.add(engine.world, [ground, roof]);
+		World.add(engine.world, [ground, roof, Frog]);
 
 		//creating a mouse constraint object
 		var mouseConstraint = MouseConstraint.create(engine);
@@ -61,7 +62,7 @@
 		Engine.run(engine);
 		
 
-		engine.world.gravity.y = 1;
+		engine.world.gravity.y = 0;
 		
 		var whichSide = true;
 		function createBox()
@@ -84,7 +85,7 @@
 				var x = document.getElementById("rad").value ;
 				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 0, frictionAir: 0, friction: .2}));
+					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 0, frictionAir: 0, friction: .0}));
 		}
 
 		function createRect(){
@@ -106,7 +107,7 @@
 			var length = document.getElementById("numLength").value;
 			var width = document.getElementById("numWidth").value;
 
-			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: .5, frictionAir:0, friction:.4}));
+			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: .5, frictionAir:0, friction:.0}));
 		}
 		
 		function get_radVal()
@@ -144,14 +145,16 @@
 		
 		function getShape()
 		{
-			currentBody = mouseConstraint.dragBody;
+			//currentBody = mouseConstraint.dragBody;
+			currentBody.setStatic(isStatic);
 		}
 		function resetForce()
 		{
-			mouseConstraint.dragBody.isStatic = true;
+			//alert("restForce");
+			currentBody.isStatic = false;
 		}
-			engine.render.canvas.addEventListener("mousedown", getShape());
-			engine.render.canvas.addEventListener("mouseup", resetForce());
+		engine.render.canvas.addEventListener("mousedown", function () {document.getElementById("bigFrogs").innerHTML = bigFrog; bigFrog.setStatic(true);});
+			engine.render.canvas.addEventListener("mouseup", function(){bigFrog.setStatic(true)});
 			
 		</script>
 
@@ -173,5 +176,7 @@
 			<input type = "button" onclick = "createBox()" value = "Polygon"></input>
 			<input type = "button" onclick = "createRect()" value = "Rectangle"></input>
 		</form>
+		
+		<div id="bigFrogs"></div>
 	</body>
 </html>

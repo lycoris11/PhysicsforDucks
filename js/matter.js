@@ -3855,6 +3855,7 @@ var Bounds = require('../geometry/Bounds');
                                 Events.trigger(mouseConstraint, 'startdrag', { mouse: mouse, body: body });
 
                                 bigFrog = i;
+                                otherBigFrog = body;
                                 break;
                             }
                         }

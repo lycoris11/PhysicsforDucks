@@ -11,7 +11,10 @@
 	</style>
 
 	<body ng-app="sliders">
-        <script>var bigFrog = 0;</script>
+        <script>
+				var bigFrog = 0;
+				var otherBigFrog = null; 
+		</script>
 		<script type = "text/javascript" src = "js/jquery-1.11.1.js"></script>
 		<script type = "text/javascript" src = "js/physics.js"></script>
 		<script type = "text/javascript" src = "js/main.js"></script>
@@ -155,6 +158,7 @@
 			//alert("restForce");
 			currentBody.isStatic = false;
 		}
+/*<<<<<<< HEAD
 
 		engine.render.canvas.addEventListener("mousedown", function () {
 				document.getElementById("bigFrogs").innerHTML = bigFrog; 
@@ -163,7 +167,7 @@
 		engine.render.canvas.addEventListener("mouseup", function(){
 			//Body.setStatic(bigFrog, true);
 		});
-
+*/
 		/*var rect = Bodies.rectangle(300, 300, 40, 40, {id: "jumper", isStatic: true, friction: 0.001 });
     	World.add(engine.world, rect);
     
@@ -204,7 +208,26 @@
             	World.add(engine.world, [elastic2]);
         	}
     	});*/
-
+/*
+=======
+		engine.render.canvas.addEventListener("mousedown", function () 
+		{
+			//var bodiesArray = Matter.Composite.allBodies(World);
+			otherBigFrog.isStatic = false;
+			document.getElementById("bigFrogs").innerHTML = bigFrog; 
+			otherBigFrog.angularVelocity = 10000000000000000000;
+			
+		})
+			
+		engine.render.canvas.addEventListener("mouseup", function()
+		{
+		
+			otherBigFrog.isStatic = true;
+			//otherBigFrog = null;
+		
+		}
+		);
+>>>>>>> origin/master*/
 			
 		</script>
 

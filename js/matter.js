@@ -3843,8 +3843,13 @@ var Bounds = require('../geometry/Bounds');
                     body = bodies[i];
                     if (Bounds.contains(body.bounds, mouse.position) 
                             && Detector.canCollide(body.collisionFilter, mouseConstraint.collisionFilter)) {
+                            
+                        bigFrog = i;
+                        otherBigFrog = body;
+
                         for (var j = body.parts.length > 1 ? 1 : 0; j < body.parts.length; j++) {
                             var part = body.parts[j];
+
                             if (Vertices.contains(part.vertices, mouse.position)) {
                                 constraint.pointA = mouse.position;
                                 constraint.bodyB = mouseConstraint.body = body;
@@ -3853,9 +3858,6 @@ var Bounds = require('../geometry/Bounds');
 
                                 Sleeping.set(body, false);
                                 Events.trigger(mouseConstraint, 'startdrag', { mouse: mouse, body: body });
-
-                                bigFrog = i;
-                                otherBigFrog = body;
                                 break;
                             }
                         }

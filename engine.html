@@ -16,7 +16,6 @@
 				var otherBigFrog = null; 
 		</script>
 		<script type = "text/javascript" src = "js/jquery-1.11.1.js"></script>
-		<script type = "text/javascript" src = "js/physics.js"></script>
 		<script type = "text/javascript" src = "js/main.js"></script>
 		<script type = "text/Javascript" src = "js/matter.js"></script>
 		<script type="text/javascript" src="js/angular.min.js"></script>
@@ -49,7 +48,7 @@
 		var roof = Bodies.rectangle(Vpx/2, 0, Vpx, 10, {isStatic: true, friction: 0});
 		var leftWall = Bodies.rectangle(10, 20, 10, Vpy*0.9);
 		var right = Bodies.rectangle();
-		var Frog = Bodies.rectangle(500,500,50,50, {angularVelocity: 100});
+		var Frog = Bodies.rectangle(500,500,50,50);
 
 		World.add(engine.world, [ground, roof, Frog]);
 
@@ -64,10 +63,12 @@
 		
 		Engine.run(engine);
 		
-
+		//gravity
 		engine.world.gravity.y = 1;
 		
 		var whichSide = true;
+		
+		//creates a new polygon
 		function createBox()
 		{
 			var location;
@@ -88,9 +89,9 @@
 				var x = document.getElementById("rad").value ;
 				var y = document.getElementById("numSides").value ;
 				
-					World.add(engine.world, Bodies.polygon(location, 50, y, x,{restitution: 0, frictionAir: 0, friction: .0}));
+					World.add(engine.world, Bodies.polygon(location, 50, y, x));//,{restitution: 0, frictionAir: 0, friction: .0}));
 		}
-
+		//creates a new rectangle
 		function createRect(){
 			var location
 
@@ -110,9 +111,9 @@
 			var length = document.getElementById("numLength").value;
 			var width = document.getElementById("numWidth").value;
 
-			World.add(engine.world, Bodies.rectangle(location ,50, length, width, {restitution: .5, frictionAir:0, friction:.0}));
+			World.add(engine.world, Bodies.rectangle(location ,50, length, width))//, {restitution: .5, frictionAir:0, friction:.0}));
 		}
-		
+		//Angular.js functional sliders
 		function get_radVal()
 		{
 			var x = document.getElementById("rad").value ;
@@ -146,22 +147,12 @@
 				$scope.w = 50;
 			});
 		
-		function getShape()
-		{
-			//currentBody = mouseConstraint.dragBody;
-			currentBody.setStatic(isStatic);
-		}
-		function resetForce()
-		{
-			//alert("restForce");
-			currentBody.isStatic = false;
-		}
+		/**mousedown and up event listeners, to set up a 'creation mode' for creating scenarios--this is not functional
 		engine.render.canvas.addEventListener("mousedown", function () 
 		{
-			//var bodiesArray = Matter.Composite.allBodies(World);
+			
 			otherBigFrog.isStatic = false;
 			document.getElementById("bigFrogs").innerHTML = bigFrog; 
-			otherBigFrog.angularVelocity = 10000000000000000000;
 			
 		})
 			
@@ -169,10 +160,10 @@
 		{
 		
 			otherBigFrog.isStatic = true;
-			//otherBigFrog = null;
 		
 		}
 		);
+		*/
 			
 		</script>
 

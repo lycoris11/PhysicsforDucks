@@ -30,6 +30,8 @@
     		Renderer = Matter.Renderer,
     		Body = Matter.Body,
     		Common = Matter.Common,
+    		Events = Matter.Events,
+    		Composite = Matter.Composite,
     		Composites = Matter.Composites,
     		MouseConstraint = Matter.MouseConstraint;;
 
@@ -62,7 +64,7 @@
 		Engine.run(engine);
 		
 
-		engine.world.gravity.y = 0;
+		engine.world.gravity.y = 1;
 		
 		var whichSide = true;
 		function createBox()
@@ -153,8 +155,56 @@
 			//alert("restForce");
 			currentBody.isStatic = false;
 		}
-		engine.render.canvas.addEventListener("mousedown", function () {document.getElementById("bigFrogs").innerHTML = bigFrog; bigFrog.setStatic(true);});
-			engine.render.canvas.addEventListener("mouseup", function(){bigFrog.setStatic(true)});
+
+		engine.render.canvas.addEventListener("mousedown", function () {
+				document.getElementById("bigFrogs").innerHTML = bigFrog; 
+		});
+
+		engine.render.canvas.addEventListener("mouseup", function(){
+			//Body.setStatic(bigFrog, true);
+		});
+
+		/*var rect = Bodies.rectangle(300, 300, 40, 40, {id: "jumper", isStatic: true, friction: 0.001 });
+    	World.add(engine.world, rect);
+    
+    	var jumper = Composite.get(engine.world, "jumper", "body");
+    	
+    		engine.render.canvas.addEventListener("mousedown", function () {
+				rect.isStatic = false;
+			});*/
+			/*engine.render.canvas.addEventListener("mouseup", function () {
+				jumper.isStatic = true;
+			});*/
+			/*Events.on(Engine, 'mousedown', function(event) {
+           		var mousePosition = event.mouse.position;
+            	jumper.isStatic = true;
+            	alert("mmear");
+
+
+            	console.log('mousedown at ' + mousePosition.x + ' ' + mousePosition.y);
+        	});*/
+
+    	/*var options = { 
+    		isStatic: true,
+    		angle: Math.PI * 0.15
+			}
+		elastic = Bodies.rectangle(300, 245, 75, 75, options),
+
+		World.add(engine.world, [elastic]);
+
+		Events.on(engine, 'tick', function(event) {
+        	if(mouseConstraint.mouse.button == 0){
+                var options2 = { 
+                    isStatic: false,
+                    angle: Math.PI * 0.35,
+                    friction: 0.0001               	
+            	}
+            	elastic2 = Bodies.rectangle(300, 245, 75, 75, options2);
+            	World.remove(engine.world, [elastic]);
+            	World.add(engine.world, [elastic2]);
+        	}
+    	});*/
+
 			
 		</script>
 
